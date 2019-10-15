@@ -3,10 +3,7 @@ import { Helmet } from "react-helmet";
 import useSiteMetadata from "./SiteMetadata";
 import { withPrefix } from "gatsby";
 
-if (typeof window !== `undefined`) {
-  require("jquery");
-  require("bootstrap/js/dist/alert");
-}
+import "../styles/bootstrap.scss";
 
 const TemplateWrapper = ({ children }) => {
   const { title, description } = useSiteMetadata();
@@ -40,6 +37,7 @@ const TemplateWrapper = ({ children }) => {
           href={`${withPrefix("/")}img/safari-pinned-tab.svg`}
           color="#ff4400"
         />
+
         <meta name="theme-color" content="#fff" />
 
         <meta property="og:type" content="website" />

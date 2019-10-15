@@ -1,10 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Button } from "react-bootstrap";
+import styles from "./styles.module.scss";
+
+console.log(styles);
 
 const Hero = ({ title, button }) => (
-  <section className="hero">
-    <h1>{title}</h1>
-    <button>{button}</button>
+  <section id="hero" className={styles.heroSection}>
+    <div className={styles.hero}>
+      <h1 className={styles.heroTitle}>{title}</h1>
+      <Button href="#">{button}</Button>
+    </div>
   </section>
 );
 

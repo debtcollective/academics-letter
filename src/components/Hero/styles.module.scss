@@ -1,0 +1,14 @@
+.hero-section {
+  display: flex;
+  justify-content: center;
+}
+
+.hero {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-title {
+  line-height: 0.85;
+}
