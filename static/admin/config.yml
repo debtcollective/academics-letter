@@ -24,7 +24,7 @@ collections:
               - label: "Title"
                 name: "title"
                 widget: "string"
-                default: "Why We Support College For All"
+                default: "Why We Support<br/> College For All"
               - label: "Button"
                 name: "button"
                 widget: "string"

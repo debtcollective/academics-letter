@@ -1,3 +1,5 @@
+@import "../../styles/core";
+
 .hero-section {
   display: flex;
   justify-content: center;
@@ -10,5 +12,7 @@
 }
 
 .hero-title {
-  line-height: 0.85;
+  color: $gray;
+  font-size: 3.2rem;
+  font-weight: bold;
 }
