@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet";
 import useSiteMetadata from "./SiteMetadata";
 import { withPrefix } from "gatsby";
 import Header from "./Header";
+import Footer from "./Footer";
 
 import "../styles/main.scss";
 
@@ -54,6 +55,7 @@ const Layout = ({ children }) => {
       <div id="main" className="main">
         {children}
       </div>
+      <Footer />
     </>
   );
 };
