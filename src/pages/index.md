@@ -45,4 +45,89 @@ letter:
     <p>
       We pledge to actively support efforts by national political, educational or labor groups willing to fight for the agenda of College for All.
     </p>
+signers:
+  list:
+    - Melina Abdullah, Cal State LA
+    - Hannah Appel, UCLA
+    - Davarian Baldwin, Trinity College
+    - Moustafa Bayoumi, Brooklyn College
+    - Cristina Beltrán, New York University
+    - Lauren Berlant, University of Chicago
+    - Michael Berubé, Penn State University
+    - Wendy Brown, UC Berkeley
+    - George Caffentzis, University of Southern Maine
+    - Craig Calhoun, Arizona State University
+    - Hazel Carby, Yale University
+    - Ben Carrington, University of Texas
+    - Cathy Cohen, University of Chicago
+    - Nathan Connolly, Johns Hopkins University
+    - Kimberlé Crenshaw, UCLA
+    - Teddy Cruz, UC San Diego
+    - Michael Denning, Yale University
+    - Richard Dienst, Rutgers University
+    - Angela Dillard, University of Michigan
+    - Lisa Duggan, New York University
+    - Charlie Eaton, UC Merced
+    - Grant Farred, Cornell University
+    - Sylvia Federici, Hofstra University
+    - Hal Foster, Princeton University
+    - Cynthia Franklin, University of Hawaii
+    - Ruthie Gilmore, CUNY Grad Center
+    - David Goldberg, UC Irvine
+    - Sara Goldrick-Rab, Temple University
+    - Linda Gordon, New York University
+    - Greg Grandin, Yale University
+    - David Graeber, London School of Economics
+    - Miriam Greenberg, Harvard University
+    - Jack Halberstam, Columbia University
+    - Michael Hanchard, University of Pennsylvania
+    - Michael Hardt, Duke University
+    - Walter Johnson, Harvard University
+    - Cindi Katz, CUNY Grad Center
+    - Kehaulani Kauanui, Wesleyan University
+    - Robin Kelley, UCLA
+    - Naomi Klein, Rutgers University
+    - Amitava Kumar, Vassar College
+    - Chenjerai Kumanyika, Rutgers University
+    - Scott Kurashige, University of Washington, Bothell
+    - David Lloyd, UC Riverside
+    - Lisa Lowe, Yale University
+    - Sunaina Maira, UC Davis
+    - Curtis Marez, UC San Diego
+    - Robert Meister, UC Santa Cruz
+    - Anne McClintock, Princeton University
+    - Fred Moten, New York University
+    - Frances Negrón-Muntaner, Columbia University
+    - Alondra Nelson, Institute of Advanced Study
+    - Chris Newfield, UC Santa Barbara
+    - Mae Ngai, Columbia University
+    - Tavia Nyong’o, Yale University
+    - Gary Okihiro, Yale University
+    - Sherry Ortner, UCLA
+    - David Palumbo-Liu, Stanford University
+    - Constance Penley, UC Santa Barbara
+    - Frances Piven, CUNY Grad Center
+    - Jasbir Puar, Rutgers University
+    - Barbara Ransby, University of Illinois, Chicago
+    - Adolph Reed, University of Pennsylvania
+    - Corey Robin, Brooklyn College
+    - Bruce Robbins, Columbia University
+    - Dylan Rodríguez, UC Riverside
+    - David Roediger, University of Kansas
+    - Ananya Roy, UCLA
+    - Andrew Ross, New York University
+    - Maria Josefina Saldaña-Portillo, New York University
+    - Saskia Sassen, Columbia University
+    - Richard Sennet, University College, London
+    - Micol Siegel, Indiana University
+    - Nikhil Singh, New York University
+    - Shannon Speed, UCLA
+    - Julie Sze, UC Davis
+    - Neferti Tadiar, Barnard College
+    - Keeanga Yahmatta Taylor, Princeton University
+    - Eric Tang, University of Texas, Austin
+    - Alan Wald, University of Michigan
+    - Robert Warrior, University of Kansas
+    - Jeffrey T. Williams, Carnegie-Mellon University
+    - Mabel Wilson, Columbia University
 ---
