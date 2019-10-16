@@ -3,9 +3,9 @@ import { Helmet } from "react-helmet";
 import useSiteMetadata from "./SiteMetadata";
 import { withPrefix } from "gatsby";
 
-import "../styles/bootstrap.scss";
+import "../styles/main.scss";
 
-const TemplateWrapper = ({ children }) => {
+const Layout = ({ children }) => {
   const { title, description } = useSiteMetadata();
   return (
     <>
@@ -48,9 +48,9 @@ const TemplateWrapper = ({ children }) => {
           content={`${withPrefix("/")}img/og-image.jpg`}
         />
       </Helmet>
-      <div id="main">{children}</div>
+      {children}
     </>
   );
 };
 
-export default TemplateWrapper;
+export default Layout;

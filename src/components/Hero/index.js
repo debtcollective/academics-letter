@@ -5,8 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignature } from "@fortawesome/free-solid-svg-icons";
 import styles from "./styles.module.scss";
 
-console.log(styles);
-
 const Hero = ({ title, button }) => (
   <section id="hero" className={styles.heroSection}>
     <div className={styles.hero}>

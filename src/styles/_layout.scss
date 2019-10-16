@@ -1,0 +1,8 @@
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background: linear-gradient(180deg, $gradient-start 0%, $gradient-end 100%);
+}
