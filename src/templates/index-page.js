@@ -6,9 +6,7 @@ import { Layout, Hero } from "../components";
 
 export const IndexPageTemplate = ({ hero }) => (
   <>
-    <Layout>
-      <Hero title={hero.title} button={hero.button} />
-    </Layout>
+    <Hero title={hero.title} button={hero.button} />
   </>
 );
 
