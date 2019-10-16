@@ -4,5 +4,9 @@ body {
 }
 
 body {
-  background: linear-gradient(180deg, $gradient-start 0%, $gradient-end 100%);
+  background: $body-gradient;
+}
+
+.main {
+  margin-top: $header-height-md;
 }

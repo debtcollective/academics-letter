@@ -1,7 +1,9 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
 import useSiteMetadata from "./SiteMetadata";
 import { withPrefix } from "gatsby";
+import Header from "./Header";
 
 import "../styles/main.scss";
 
@@ -48,9 +50,16 @@ const Layout = ({ children }) => {
           content={`${withPrefix("/")}img/og-image.jpg`}
         />
       </Helmet>
-      {children}
+      <Header />
+      <div id="main" className="main">
+        {children}
+      </div>
     </>
   );
+};
+
+Layout.propTypes = {
+  children: PropTypes.node,
 };
 
 export default Layout;

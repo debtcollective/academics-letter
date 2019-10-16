@@ -1,43 +1,18 @@
-// Variables
+/**
+ * Bootstrap core and variables
+ * Files required by bootstrap to work
+ */
+@import "core";
 
-$blue: #95e7fd;
-$red: #ee3514;
-$green: #2dcbad;
-
-$gradient-start: #dbf8ff;
-$gradient-end: #fcfbf7;
-$body-bg: $gradient-start;
-
-$primary: $green;
-
-$font-family-sans-serif: "Libre Franklin", sans-serif;
-$font-family-monospace: "More Gothic Bold", Impact, sans-serif;
-$font-weight-bold: 600;
-
-// this will allow us to create better responsive font sizes
-$display1-size: 6em;
-$display2-size: 8vw;
-$display3-size: 12.5vw;
-$display4-size: 5.5vw;
-
-$display1-weight: $font-weight-bold;
-$display2-weight: $font-weight-bold;
-$display3-weight: $font-weight-bold;
-$display4-weight: $font-weight-bold;
-
-// Buttons
-$btn-padding-y: 0.75rem;
-$btn-padding-x: 1.5rem;
-
-// bootstrap required
-@import "node_modules/bootstrap/scss/functions";
-@import "node_modules/bootstrap/scss/variables";
-@import "node_modules/bootstrap/scss/mixins";
-
-// bootstrap optional
+/**
+ * Bootstrap optional
+ */
 @import "node_modules/bootstrap/scss/reboot";
 @import "node_modules/bootstrap/scss/grid";
 @import "node_modules/bootstrap/scss/type";
 @import "node_modules/bootstrap/scss/utilities";
 @import "node_modules/bootstrap/scss/buttons";
 @import "node_modules/bootstrap/scss/close";
+@import "node_modules/bootstrap/scss/nav";
+@import "node_modules/bootstrap/scss/navbar";
+@import "node_modules/bootstrap/scss/modal";
