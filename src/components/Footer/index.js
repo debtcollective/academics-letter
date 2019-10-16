@@ -7,7 +7,7 @@ const Footer = () => {
 
   return (
     <div className="footer">
-      <div className="container-fluid ml-0">
+      <div className="container ml-0">
         <div className="row d-none d-md-flex">
           <div className="footer__list col-xl-2 col-lg-3 col-md-3 col-sm-6 col-6">
             <h6 className="footer__list-head">Organize</h6>
@@ -83,7 +83,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="container-fluid ml-0">
+      <div className="brand-container container ml-0">
         <div className="row">
           <div className="col-xl-2 col-lg-3 col-md-4 d-none d-md-flex">
             <a href="/">
@@ -109,6 +109,21 @@ const Footer = () => {
                   Terms and Conditions
                 </a>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="container-fluid mt-3 d-none d-md-flex">
+        <div className="row">
+          <div className="col">
+            <div className="footer__netlify-logo">
+              Hosted on
+              <a href="https://www.netlify.com/" target="_blank">
+                <img
+                  src="https://www.netlify.com/img/press/logos/full-logo-dark-simple.svg"
+                  alt="netlify logo"
+                />
+              </a>
             </div>
           </div>
         </div>

@@ -7,11 +7,11 @@
   margin-top: 2rem;
   padding: 3rem 0 2rem 0;
 
-  > .container-fluid {
+  > .container {
     max-width: map-get($container-max-widths, xl);
   }
 
-  > *:not(:first-child) {
+  .brand-container {
     @include media-breakpoint-up(md) {
       margin-top: 5.25rem;
     }
@@ -67,6 +67,14 @@
       &:not(:last-child) {
         margin-bottom: 1rem;
       }
+    }
+  }
+
+  &__netlify-logo {
+    img {
+      display: inline-block;
+      margin-left: 0.5rem;
+      width: 100px;
     }
   }
 }
