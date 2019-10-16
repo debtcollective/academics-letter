@@ -12,7 +12,7 @@ const Hero = ({ title, button }) => (
         className={`text-center ${styles.heroTitle}`}
         dangerouslySetInnerHTML={{ __html: title }}
       />
-      <Button href="#" className={`mt-2 btn-lg`}>
+      <Button href="#" className={`mt-2 mt-lg-3 btn-lg`}>
         <FontAwesomeIcon icon={faSignature} className="mr-2 fa-lg" />
         {button}
       </Button>

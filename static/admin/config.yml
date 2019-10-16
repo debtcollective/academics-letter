@@ -29,3 +29,10 @@ collections:
                 name: "button"
                 widget: "string"
                 default: "Sign your name"
+          - label: "Letter Section"
+            name: "letter"
+            widget: "object"
+            fields:
+              - label: "Text"
+                name: "text"
+                widget: "markdown"
