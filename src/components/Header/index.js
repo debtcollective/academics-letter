@@ -34,12 +34,14 @@ const Header = () => {
             </div>
             <div className="col-6 col-lg-6 col-xl-9">
               <div className="header-col justify-content-xl-start">
-                <img
-                  className="logo"
-                  src={logo}
-                  alt="debtcollective logo"
-                  width="100%"
-                />
+                <a href="/">
+                  <img
+                    className="logo"
+                    src={logo}
+                    alt="debtcollective logo"
+                    width="100%"
+                  />
+                </a>
                 <div className="d-none d-xl-flex">
                   <ul className="nav align-items-center" role="navigation">
                     <li className="nav-item">
