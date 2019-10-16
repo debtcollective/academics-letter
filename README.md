@@ -1,5 +1,7 @@
 # Academics Letter
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b19e30de-5ff5-486d-9a6b-3c686be8ac32/deploy-status)](https://app.netlify.com/sites/clever-kilby-293588/deploys)
+
 Academics letter website repository. The application has been bootstraped with [gatsby-starter-netlify-cms](https://github.com/netlify-templates/gatsby-starter-netlify-cms) head over that project for further overview of the project base.
 
 ## Setup

@@ -2,11 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 
-import { Layout, Hero } from "../components";
+import { Layout, Hero, Letter, Signers } from "../components";
 
-export const IndexPageTemplate = ({ hero }) => (
+export const IndexPageTemplate = ({ hero, letter, signers }) => (
   <>
     <Hero title={hero.title} button={hero.button} />
+    <Letter text={letter.text} />
+    <Signers signers={signers.list} />
   </>
 );
 
@@ -14,6 +16,12 @@ IndexPageTemplate.propTypes = {
   hero: PropTypes.shape({
     title: PropTypes.string,
     button: PropTypes.string,
+  }),
+  letter: PropTypes.shape({
+    text: PropTypes.string,
+  }),
+  signers: PropTypes.shape({
+    list: PropTypes.arrayOf(PropTypes.string),
   }),
 };
 
@@ -44,6 +52,12 @@ export const pageQuery = graphql`
         hero {
           title
           button
+        }
+        letter {
+          text
+        }
+        signers {
+          list
         }
       }
     }

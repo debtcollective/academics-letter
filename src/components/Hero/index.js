@@ -5,14 +5,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignature } from "@fortawesome/free-solid-svg-icons";
 import styles from "./styles.module.scss";
 
-console.log(styles);
-
 const Hero = ({ title, button }) => (
-  <section id="hero" className={styles.heroSection}>
+  <section id="hero" className={`mt-md-5 ${styles.heroSection}`}>
     <div className={styles.hero}>
-      <h1 className={styles.heroTitle}>{title}</h1>
-      <Button href="#" className={styles.button}>
-        <FontAwesomeIcon icon={faSignature} className="mr-2" />
+      <h1
+        className={`text-center ${styles.heroTitle}`}
+        dangerouslySetInnerHTML={{ __html: title }}
+      />
+      <Button href="#" className={`mt-2 mt-lg-3 btn-lg`}>
+        <FontAwesomeIcon icon={faSignature} className="mr-2 fa-lg" />
         {button}
       </Button>
     </div>

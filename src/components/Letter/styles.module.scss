@@ -1,18 +1,15 @@
 @import "../../styles/core";
 
-.hero-section {
+.letter-section {
   display: flex;
   justify-content: center;
 }
 
-.hero {
+.letter {
   align-items: center;
   display: flex;
   flex-direction: column;
-}
-
-.hero-title {
-  color: $gray;
-  font-size: 3.2rem;
-  font-weight: bold;
+  font-size: 1.3rem;
+  line-height: 2;
+  text-indent: 3rem;
 }

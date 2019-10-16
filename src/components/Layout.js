@@ -1,11 +1,14 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
 import useSiteMetadata from "./SiteMetadata";
 import { withPrefix } from "gatsby";
+import Header from "./Header";
+import Footer from "./Footer";
 
-import "../styles/bootstrap.scss";
+import "../styles/main.scss";
 
-const TemplateWrapper = ({ children }) => {
+const Layout = ({ children }) => {
   const { title, description } = useSiteMetadata();
   return (
     <>
@@ -48,9 +51,17 @@ const TemplateWrapper = ({ children }) => {
           content={`${withPrefix("/")}img/og-image.jpg`}
         />
       </Helmet>
-      <div id="main">{children}</div>
+      <Header />
+      <div id="main" className="main">
+        {children}
+      </div>
+      <Footer />
     </>
   );
 };
 
-export default TemplateWrapper;
+Layout.propTypes = {
+  children: PropTypes.node,
+};
+
+export default Layout;
