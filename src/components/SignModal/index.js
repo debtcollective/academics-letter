@@ -131,7 +131,11 @@ class SignForm extends React.Component {
           className="text-center d-flex justify-content-center"
         >
           <Button className={`mt-2 mt-lg-3 btn-lg`} type="submit">
-            <FontAwesomeIcon icon={faSignature} className="mr-2 fa-lg" />
+            <FontAwesomeIcon
+              icon={faSignature}
+              className="mr-2 fa-lg"
+              width={32}
+            />
             Sign your name
           </Button>
         </Form.Group>

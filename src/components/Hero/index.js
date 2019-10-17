@@ -11,7 +11,7 @@ const Hero = ({ title, button, onButtonClick }) => {
   if (button) {
     ctaButton = (
       <Button className={`mt-2 mt-lg-3 btn-lg`} onClick={() => onButtonClick()}>
-        <FontAwesomeIcon icon={faSignature} className="mr-2 fa-lg" />
+        <FontAwesomeIcon icon={faSignature} className="mr-2 fa-lg" width="32" />
         {button}
       </Button>
     );
