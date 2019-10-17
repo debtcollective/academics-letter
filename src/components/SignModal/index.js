@@ -86,7 +86,7 @@ const ErrorMessage = () => (
   <div>Your information was not sent. Please try again later.</div>
 );
 
-const recaptchaSiteKey = process.env.GATSBY_SITE_RECAPTCHA_KEY;
+const recaptchaSiteKey = process.env.SITE_RECAPTCHA_KEY;
 
 const SignModal = props => (
   <Modal
