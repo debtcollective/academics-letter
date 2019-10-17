@@ -18,7 +18,10 @@ function encode(data) {
 class SignForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      error: false,
+      success: false,
+    };
   }
 
   handleChange = e => {
@@ -32,12 +35,16 @@ class SignForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     const form = e.target;
+
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({
         "form-name": form.getAttribute("name"),
-        ...this.state,
+        "g-recaptcha-response": this.state["g-recaptcha-response"],
+        name: this.state.name,
+        email: this.state.email,
+        college: this.state.college,
       }),
     })
       .then(() => this.setState({ success: true }))
@@ -57,14 +64,15 @@ class SignForm extends React.Component {
 
     return (
       <form
-        name="Letter Form"
+        name="letter-form"
         method="POST"
         data-netlify="true"
-        action="/next-steps"
-        data-netlify-honeypot="phone"
+        data-netlify-honeypot="__bf"
         data-netlify-recaptcha="true"
         onSubmit={this.handleSubmit}
       >
+        <Form.Control type="hidden" name="form-name" value="letter-form" />
+
         <Form.Group controlId="formName">
           <Form.Label>
             <strong>Full name</strong>
