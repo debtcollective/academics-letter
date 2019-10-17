@@ -1,10 +1,18 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 var proxy = require("http-proxy-middleware");
 
 module.exports = {
   siteMetadata: {
-    title: "Academics Letter",
-    description:
-      "We are a membership organization working to transform our individual financial struggles into a source of collective power.",
+    title: `Why Faculty Support College For All`,
+    description: `Sign the letter to show your support. #CollegeForAll`,
+    author: "Debt Collective",
+    twitterUsername: `@0debtzone`,
+    facebookPage: "https://www.facebook.com/DebtCollective",
+    image: `${process.env.SITE_URL}/img/seo.png`,
+    url: process.env.SITE_URL,
   },
   plugins: [
     "gatsby-plugin-react-helmet",
@@ -14,6 +22,13 @@ module.exports = {
       options: {
         path: `${__dirname}/src/pages`,
         name: "pages",
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `img`,
+        path: `${__dirname}/src/img`,
       },
     },
     "gatsby-plugin-sharp",
@@ -41,6 +56,35 @@ module.exports = {
             resolve: "gatsby-remark-copy-linked-files",
             options: {
               destinationDir: "static",
+            },
+          },
+          {
+            resolve: `gatsby-plugin-favicon`,
+            options: {
+              logo: "./src/img/favicon.png",
+              appName: null,
+              appDescription: null,
+              developerName: null,
+              developerURL: null,
+              dir: "auto",
+              lang: "en-US",
+              background: "#FF4630",
+              theme_color: "#FF4630",
+              display: "standalone",
+              orientation: "any",
+              start_url: "/?homescreen=1",
+              version: "1.0",
+
+              icons: {
+                android: true,
+                appleIcon: true,
+                appleStartup: true,
+                coast: false,
+                favicons: true,
+                firefox: true,
+                yandex: false,
+                windows: true,
+              },
             },
           },
         ],

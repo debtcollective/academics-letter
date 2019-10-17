@@ -2,8 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 
-import { Layout, Hero, FAQ } from "../components";
+import { Layout, Hero, FAQ, Mailto } from "../components";
 import { Container, Row, Col, Card } from "react-bootstrap";
+
+const mailtoHeaders = {
+  subject: "Next Steps for College For All",
+};
 
 export const NextStepsTemplate = ({ hero, content }) => (
   <Container>
@@ -22,8 +26,14 @@ export const NextStepsTemplate = ({ hero, content }) => (
             <Card.Text className="mb-4">
               Here are a few ideas to help you engage and involve others on your
               campus and beyond in the fight for the College for All agenda. If
-              you have more questions please contact Hannah Appel at happel at
-              ucla dot edu or Andrew Ross at andrew dot ross at nyu dot edu.
+              you have more questions please contact{" "}
+              <Mailto email="happel@ucla.edu" headers={mailtoHeaders}>
+                Hannah Appel
+              </Mailto>{" "}
+              or{" "}
+              <Mailto email="andrew.ross@nyu.edu" headers={mailtoHeaders}>
+                Andrew Ross
+              </Mailto>
             </Card.Text>
 
             <Card.Title>
@@ -86,7 +96,7 @@ const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
 
   return (
-    <Layout>
+    <Layout title="Why Faculty Support College For All | Next Steps">
       <NextStepsTemplate {...frontmatter} />
     </Layout>
   );
