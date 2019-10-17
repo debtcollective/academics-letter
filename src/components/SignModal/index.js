@@ -1,66 +1,138 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Modal, Form, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignature } from "@fortawesome/free-solid-svg-icons";
-import NetlifyForm from "react-netlify-form";
+import Recaptcha from "react-google-recaptcha";
 import { Link } from "gatsby";
 import "./styles.scss";
 
-const SignForm = ({ recaptcha }) => (
-  <>
-    <Form.Group controlId="formName">
-      <Form.Label>
-        <strong>Full name</strong>
-      </Form.Label>
-      <Form.Control type="text" name="name" placeholder="Enter full name" />
-    </Form.Group>
+const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
 
-    <Form.Group controlId="formEmail">
-      <Form.Label>
-        <strong>Email address</strong>
-      </Form.Label>
-      <Form.Control type="email" name="email" placeholder="Enter email" />
-      <Form.Text className="text-muted">
-        We'll never share your email with anyone else.
-      </Form.Text>
-    </Form.Group>
+function encode(data) {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&");
+}
 
-    <Form.Group controlId="formSchool">
-      <Form.Label>
-        <strong>College</strong>
-      </Form.Label>
-      <Form.Control
-        type="text"
-        name="college"
-        placeholder="Enter college name"
-      />
-    </Form.Group>
+class SignForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
-    <Form.Group
-      controlId="formSubmit"
-      className="text-center d-flex justify-content-center"
-    >
-      {recaptcha}
-    </Form.Group>
+  handleChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
 
-    <Form.Group
-      controlId="formSubmit"
-      className="text-center d-flex justify-content-center"
-    >
-      <Button className={`mt-2 mt-lg-3 btn-lg`} type="submit">
-        <FontAwesomeIcon icon={faSignature} className="mr-2 fa-lg" />
-        Sign your name
-      </Button>
-    </Form.Group>
-  </>
+  handleRecaptcha = value => {
+    this.setState({ "g-recaptcha-response": value });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    const form = e.target;
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({
+        "form-name": form.getAttribute("name"),
+        ...this.state,
+      }),
+    })
+      .then(() => this.setState({ success: true }))
+      .catch(() => this.setState({ error: true }));
+  };
+
+  render() {
+    const { success, error } = this.state;
+
+    if (error) {
+      return <ErrorMessage />;
+    }
+
+    if (success) {
+      return <SuccessMessage />;
+    }
+
+    return (
+      <form
+        name="Letter Form"
+        method="POST"
+        data-netlify="true"
+        action="/next-steps"
+        data-netlify-honeypot="phone"
+        data-netlify-recaptcha="true"
+      >
+        <Form.Control type="hidden" name="form-name" value="Letter Form" />
+
+        <Form.Group controlId="formName">
+          <Form.Label>
+            <strong>Full name</strong>
+          </Form.Label>
+          <Form.Control
+            type="text"
+            name="name"
+            placeholder="Enter full name"
+            onChange={this.handleChange}
+          />
+        </Form.Group>
+
+        <Form.Group controlId="formEmail">
+          <Form.Label>
+            <strong>Email address</strong>
+          </Form.Label>
+          <Form.Control
+            type="email"
+            name="email"
+            placeholder="Enter email"
+            onChange={this.handleChange}
+          />
+          <Form.Text className="text-muted">
+            We'll never share your email with anyone else.
+          </Form.Text>
+        </Form.Group>
+
+        <Form.Group controlId="formSchool">
+          <Form.Label>
+            <strong>College</strong>
+          </Form.Label>
+          <Form.Control
+            type="text"
+            name="college"
+            placeholder="Enter college name"
+            onChange={this.handleChange}
+          />
+        </Form.Group>
+
+        <Form.Group
+          controlId="formSubmit"
+          className="text-center d-flex justify-content-center"
+        >
+          <Recaptcha
+            className="field"
+            ref="recaptcha"
+            sitekey={RECAPTCHA_KEY}
+            onChange={this.handleRecaptcha}
+          />
+        </Form.Group>
+
+        <Form.Group
+          controlId="formSubmit"
+          className="text-center d-flex justify-content-center"
+        >
+          <Button className={`mt-2 mt-lg-3 btn-lg`} type="submit">
+            <FontAwesomeIcon icon={faSignature} className="mr-2 fa-lg" />
+            Sign your name
+          </Button>
+        </Form.Group>
+      </form>
+    );
+  }
+}
+
+const ErrorMessage = () => (
+  <div>Your information was not sent. Please try again later.</div>
 );
-
-SignForm.propTypes = {
-  recaptcha: PropTypes.node,
-};
-
-const LoadingMessage = () => <div>Loading...</div>;
 
 const SuccessMessage = () => (
   <div>
@@ -82,12 +154,6 @@ const SuccessMessage = () => (
   </div>
 );
 
-const ErrorMessage = () => (
-  <div>Your information was not sent. Please try again later.</div>
-);
-
-const recaptchaSiteKey = process.env.SITE_RECAPTCHA_KEY;
-
 const SignModal = props => (
   <Modal
     {...props}
@@ -107,24 +173,7 @@ const SignModal = props => (
       </Modal.Title>
     </Modal.Header>
     <Modal.Body>
-      <NetlifyForm
-        name="Signature Form"
-        recaptcha={{
-          sitekey: recaptchaSiteKey,
-          size: "normal",
-        }}
-      >
-        {({ loading, error, success, recaptcha }) => (
-          <div>
-            {loading && <LoadingMessage />}
-            {error && <ErrorMessage />}
-            {success && <SuccessMessage />}
-            {!loading && !success && !error && (
-              <SignForm recaptcha={recaptcha} />
-            )}
-          </div>
-        )}
-      </NetlifyForm>
+      <SignForm />
     </Modal.Body>
   </Modal>
 );
