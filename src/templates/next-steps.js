@@ -50,11 +50,7 @@ export const NextStepsTemplate = ({ hero, content }) => (
               your campus and beyond.
             </Card.Text>
 
-            <Row className="mt-md-4">
-              <Col>
-                <FAQ entries={content.faq} />
-              </Col>
-            </Row>
+            <FAQ entries={content.faq} />
           </Card.Body>
         </Card>
       </Col>

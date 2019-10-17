@@ -8,25 +8,16 @@ if (typeof window !== `undefined`) {
 
 const FAQ = ({ entries }) => (
   <section className="faq">
-    <div className="container-fluid distribute-rows">
-      <div className="row">
-        <div className="col">
-          <div className="collapsable-list">
-            {entries.map(({ title, text }, index) => (
-              <details
-                key={`faq-question-${index}`}
-                className="collapsable-list__item"
-              >
-                <summary className="summary">{title}</summary>
-                <div
-                  className="content"
-                  dangerouslySetInnerHTML={{ __html: text }}
-                />
-              </details>
-            ))}
-          </div>
-        </div>
-      </div>
+    <div className="collapsable-list">
+      {entries.map(({ title, text }, index) => (
+        <details
+          key={`faq-question-${index}`}
+          className="collapsable-list__item"
+        >
+          <summary className="summary">{title}</summary>
+          <div className="content" dangerouslySetInnerHTML={{ __html: text }} />
+        </details>
+      ))}
     </div>
   </section>
 );

@@ -5,6 +5,7 @@ import useSiteMetadata from "./SiteMetadata";
 import { withPrefix } from "gatsby";
 import Header from "./Header";
 import Footer from "./Footer";
+import favicon from "../img/favicon.png";
 
 import "../styles/main.scss";
 
@@ -40,6 +41,7 @@ const Layout = ({ children }) => {
           href={`${withPrefix("/")}img/safari-pinned-tab.svg`}
           color="#ff4400"
         />
+        <link rel="shortcut icon" href={favicon} type="image/png" />
 
         <meta name="theme-color" content="#fff" />
 
