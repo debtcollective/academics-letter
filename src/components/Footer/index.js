@@ -12,42 +12,64 @@ const Footer = () => {
           <div className="footer__list col-xl-2 col-lg-3 col-md-3 col-sm-6 col-6">
             <h6 className="footer__list-head">Organize</h6>
             <div className="footer__list-item">
-              <a href="https://community.debtcollective.org">Community</a>
+              <a href="https://community.debtcollective.org" target="_blank">
+                Community
+              </a>
             </div>
           </div>
           <div className="footer__list col-lg-2 col-md-3 col-sm-6 col-6">
             <h6 className="footer__list-head">Take Action</h6>
             <div className="footer__list-item">
-              <a href="https://community.debtcollective.org/calendar">Events</a>
+              <a
+                href="https://community.debtcollective.org/calendar"
+                target="_blank"
+              >
+                Events
+              </a>
             </div>
             <div className="footer__list-item">
-              <a href="https://tools.debtcollective.org">Dispute your Debt</a>
+              <a href="https://tools.debtcollective.org" target="_blank">
+                Dispute your Debt
+              </a>
             </div>
           </div>
           <div className="footer__list col-lg-2 col-md-3 col-sm-6 col-6">
             <h6 className="footer__list-head">Learn</h6>
             <div className="footer__list-item">
-              <a href="https://powerreport.debtcollective.org">
+              <a href="https://powerreport.debtcollective.org" target="_blank">
                 The Power Report
               </a>
             </div>
             <div className="footer__list-item">
-              <a href="https://debtcollective.org/#about">About Us</a>
+              <a href="https://debtcollective.org/#about" target="_blank">
+                About Us
+              </a>
             </div>
             <div className="footer__list-item">
-              <a href="https://wiki.debtcollective.org">Community Wiki</a>
+              <a href="https://wiki.debtcollective.org" target="_blank">
+                Community Wiki
+              </a>
             </div>
           </div>
           <div className="footer__list col-lg-2 col-md-3 col-sm-6 col-6">
             <h6 className="footer__list-head">More</h6>
             <div className="footer__list-item">
-              <a href="https://tools.debtcollective.org/contact">Contact</a>
+              <a
+                href="https://tools.debtcollective.org/contact"
+                target="_blank"
+              >
+                Contact
+              </a>
             </div>
             <div className="footer__list-item">
-              <a href="https://debtcollective.org/donate">Donate</a>
+              <a href="https://debtcollective.org/donate" target="_blank">
+                Donate
+              </a>
             </div>
             <div className="footer__list-item">
-              <a href="https://github.com/debtcollective">Open Source</a>
+              <a href="https://github.com/debtcollective" target="_blank">
+                Open Source
+              </a>
             </div>
           </div>
         </div>
@@ -70,7 +92,10 @@ const Footer = () => {
                 Copyright {currentYear}
               </div>
               <div className="brand-text tos">
-                <a href="https://community.debtcollective.org/tos">
+                <a
+                  href="https://community.debtcollective.org/tos"
+                  target="_blank"
+                >
                   Terms and Conditions
                 </a>
               </div>
