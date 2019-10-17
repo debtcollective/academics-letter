@@ -13,7 +13,7 @@ const Signers = ({ signers }) => {
       <Container>
         <Row>
           <Col>
-            <h2 className="mb-2 font-weight-bold">Signers</h2>
+            <h2 className="mb-2 font-weight-bold">Initial Signers</h2>
           </Col>
         </Row>
         <Row>

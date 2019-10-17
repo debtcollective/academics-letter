@@ -12,27 +12,23 @@ const Footer = () => {
           <div className="footer__list col-xl-2 col-lg-3 col-md-3 col-sm-6 col-6">
             <h6 className="footer__list-head">Organize</h6>
             <div className="footer__list-item">
-              <a href="{{ urls.discourse.endpoint }}">Community</a>
+              <a href="https://community.debtcollective.org" target="_blank">
+                Community
+              </a>
             </div>
           </div>
           <div className="footer__list col-lg-2 col-md-3 col-sm-6 col-6">
             <h6 className="footer__list-head">Take Action</h6>
             <div className="footer__list-item">
               <a
-                href="{{
-            urls.discourse.endpoint | append: urls.discourse.paths.events
-          }}"
+                href="https://community.debtcollective.org/calendar"
+                target="_blank"
               >
                 Events
               </a>
             </div>
             <div className="footer__list-item">
-              <a
-                href="{{
-            urls.dispute - tools.endpoint
-              | append: urls.dispute - tools.paths.dispute - tools
-          }}"
-              >
+              <a href="https://tools.debtcollective.org" target="_blank">
                 Dispute your Debt
               </a>
             </div>
@@ -40,45 +36,40 @@ const Footer = () => {
           <div className="footer__list col-lg-2 col-md-3 col-sm-6 col-6">
             <h6 className="footer__list-head">Learn</h6>
             <div className="footer__list-item">
-              <a href="{{ urls.power - report.endpoint }}">The Power Report</a>
+              <a href="https://powerreport.debtcollective.org" target="_blank">
+                The Power Report
+              </a>
             </div>
             <div className="footer__list-item">
-              <a
-                href="/#about"
-                data-toggle="collapse"
-                data-target="#hidden-text"
-              >
+              <a href="https://debtcollective.org/#about" target="_blank">
                 About Us
               </a>
             </div>
             <div className="footer__list-item">
-              <a href="{{ urls.wiki.endpoint }}">Community Wiki</a>
+              <a href="https://wiki.debtcollective.org" target="_blank">
+                Community Wiki
+              </a>
             </div>
           </div>
           <div className="footer__list col-lg-2 col-md-3 col-sm-6 col-6">
             <h6 className="footer__list-head">More</h6>
             <div className="footer__list-item">
               <a
-                href="{{
-            urls.dispute - tools.endpoint
-              | append: urls.dispute - tools.paths.contact
-          }}"
+                href="https://tools.debtcollective.org/contact"
+                target="_blank"
               >
                 Contact
               </a>
             </div>
             <div className="footer__list-item">
-              <a
-                href="{{
-            urls.dispute - tools.endpoint
-              | append: urls.dispute - tools.paths.donate
-          }}"
-              >
+              <a href="https://debtcollective.org/donate" target="_blank">
                 Donate
               </a>
             </div>
             <div className="footer__list-item">
-              <a href="{{ urls.repository.endpoint }}">Open Source</a>
+              <a href="https://github.com/debtcollective" target="_blank">
+                Open Source
+              </a>
             </div>
           </div>
         </div>
@@ -102,9 +93,8 @@ const Footer = () => {
               </div>
               <div className="brand-text tos">
                 <a
-                  href="{{
-              urls.discourse.endpoint | append: urls.discourse.paths.tos
-            }}"
+                  href="https://community.debtcollective.org/tos"
+                  target="_blank"
                 >
                   Terms and Conditions
                 </a>

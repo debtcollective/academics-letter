@@ -30,19 +30,34 @@ export const NextStepsTemplate = ({ hero, content }) => (
               <h4>First Steps - 5 Minutes or Less</h4>
             </Card.Title>
             <Card.Text>
-              Contact your representative with <a href="#">this easy form</a>.
-              Identify yourself as a professor and clearly express your support
-              for College for All.
+              Contact your representative with{" "}
+              <a
+                href="https://y.dsausa.org/c4a/debt/reps/"
+                alt="contact your representative about the student debt cancellation act"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                this easy form
+              </a>
+              . Identify yourself as a professor and clearly express your
+              support for College for All.
             </Card.Text>
 
             <Card.Text>
-              <a href="#">Order a T-Shirt!</a> The shirts read: “I am your
-              professor. I think your student debt is unjust. Let’s talk.” Worn
-              on campus and to class, they are a perfect way to get meaningful
-              conversations started. 
+              <a
+                href="http://bit.ly/i-am-your-professor"
+                alt="i am your professor t-shirt"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Order a T-Shirt!
+              </a>{" "}
+              The shirts read: “I am your professor. I think your student debt
+              is unjust. Let’s talk.” Worn on campus and to class, they are a
+              perfect way to get meaningful conversations started. 
             </Card.Text>
 
-            <Card.Title>
+            <Card.Title className="mt-4">
               <h4>Next Steps - Get Organized!</h4>
             </Card.Title>
             <Card.Text>

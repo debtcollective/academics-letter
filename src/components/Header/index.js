@@ -67,7 +67,8 @@ const Header = () => {
               <div className="header-col justify-content-end buttons">
                 {/* >= lg */}
                 <a
-                  href="{{ urls.discourse.endpoint }}/login"
+                  href="https://community.debtcollective.org/signup"
+                  target="_blank"
                   role="button"
                   className="btn btn-lg btn-outline-dark d-none d-xl-block btn-session"
                 >
@@ -75,7 +76,8 @@ const Header = () => {
                 </a>
                 {/* >= md */}
                 <a
-                  href="{{ urls.discourse.endpoint }}/login"
+                  href="https://community.debtcollective.org/login"
+                  target="_blank"
                   role="button"
                   className="btn btn-primary btn-lg d-none d-md-block btn-session "
                 >
@@ -83,7 +85,8 @@ const Header = () => {
                 </a>
                 {/* small */}
                 <a
-                  href="{{ urls.discourse.endpoint }}/login"
+                  href="https://community.debtcollective.org/login"
+                  target="_blank"
                   role="button"
                   className="btn btn-primary btn-sm d-md-none d-xs-block d-sm-block btn-session"
                 >
@@ -103,7 +106,11 @@ const Header = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="{{ urls.donate.endpoint }}">
+              <a
+                className="nav-link"
+                href="https://debtcollective.org/donate"
+                target="_blank"
+              >
                 Donate
               </a>
             </li>
