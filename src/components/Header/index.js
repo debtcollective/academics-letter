@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import classNames from "classnames";
 import logo from "../../img/logo-light.svg";
 import { Collapse } from "react-bootstrap";
+import { Link } from "gatsby";
 import "./styles.scss";
 
 const Header = () => {
@@ -34,42 +35,27 @@ const Header = () => {
             </div>
             <div className="col-6 col-lg-6 col-xl-9">
               <div className="header-col justify-content-xl-start">
-                <a href="/">
+                <Link to="/" className="nav-link">
                   <img
                     className="logo"
                     src={logo}
                     alt="debtcollective logo"
                     width="100%"
                   />
-                </a>
+                </Link>
                 <div className="d-none d-xl-flex">
                   <ul className="nav align-items-center" role="navigation">
                     <li className="nav-item">
-                      <a
-                        className="nav-link"
-                        href="{{ urls.dispute-tools.endpoint }}"
-                      >
-                        Dispute Your Debt
-                      </a>
+                      <Link to="/next-steps" className="nav-link">
+                        Next Steps
+                      </Link>
                     </li>
                     <li className="nav-item">
                       <a
                         className="nav-link"
-                        href="{{ urls.discourse.endpoint }}"
+                        href="https://debtcollective.org/donate"
+                        target="_blank"
                       >
-                        Community
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a
-                        className="nav-link"
-                        href="{{ urls.power-report.endpoint }}"
-                      >
-                        The Power Report
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a className="nav-link" href="{{ urls.donate.endpoint }}">
                         Donate
                       </a>
                     </li>
@@ -112,19 +98,9 @@ const Header = () => {
         <div id="slider-nav" className="slider-nav d-xl-none">
           <ul className="nav flex-column" role="navigation">
             <li className="nav-item">
-              <a className="nav-link" href="{{ urls.dispute-tools.endpoint }}">
-                Dispute Your Debt
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="{{ urls.discourse.endpoint }}">
-                Community
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="{{ urls.power-report.endpoint }}">
-                The Power Report
-              </a>
+              <Link to="/next-steps" className="nav-link">
+                Next Steps
+              </Link>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="{{ urls.donate.endpoint }}">
