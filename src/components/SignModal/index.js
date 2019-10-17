@@ -6,7 +6,8 @@ import Recaptcha from "react-google-recaptcha";
 import { Link } from "gatsby";
 import "./styles.scss";
 
-const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY;
+const RECAPTCHA_KEY =
+  process.env.SITE_RECAPTCHA_KEY || process.env.GATSBY_SITE_RECAPTCHA_KEY;
 
 function encode(data) {
   return Object.keys(data)
@@ -62,9 +63,8 @@ class SignForm extends React.Component {
         action="/next-steps"
         data-netlify-honeypot="phone"
         data-netlify-recaptcha="true"
+        onSubmit={this.handleSubmit}
       >
-        <Form.Control type="hidden" name="form-name" value="Letter Form" />
-
         <Form.Group controlId="formName">
           <Form.Label>
             <strong>Full name</strong>
@@ -110,7 +110,9 @@ class SignForm extends React.Component {
         >
           <Recaptcha
             className="field"
-            ref="recaptcha"
+            ref={recaptcha => {
+              this.recaptcha = recaptcha;
+            }}
             sitekey={RECAPTCHA_KEY}
             onChange={this.handleRecaptcha}
           />
