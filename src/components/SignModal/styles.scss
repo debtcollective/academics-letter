@@ -1,0 +1,21 @@
+@import "../../styles/core";
+
+.sign-modal {
+  .modal-header {
+    border-bottom: 0;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 2rem 1rem;
+
+    .close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
+  }
+
+  .sign-modal-title {
+    font-size: 3.2rem;
+    margin-bottom: 0;
+  }
+}

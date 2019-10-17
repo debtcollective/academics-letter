@@ -1,16 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 
-import { Layout, Hero, Letter, Signers } from "../components";
+import { Layout, Hero, Letter, Signers, SignModal } from "../components";
 
-export const IndexPageTemplate = ({ hero, letter, signers }) => (
-  <>
-    <Hero title={hero.title} button={hero.button} />
-    <Letter text={letter.text} />
-    <Signers signers={signers.list} />
-  </>
-);
+export const IndexPageTemplate = ({ hero, letter, signers }) => {
+  const [modalShow, setModalShow] = useState(false);
+
+  return (
+    <>
+      <Hero
+        title={hero.title}
+        button={hero.button}
+        onButtonClick={() => setModalShow(true)}
+      />
+      <Letter text={letter.text} />
+      <Signers signers={signers.list} />
+      <SignModal show={modalShow} onHide={() => setModalShow(false)} />
+    </>
+  );
+};
 
 IndexPageTemplate.propTypes = {
   hero: PropTypes.shape({

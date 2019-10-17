@@ -5,12 +5,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignature } from "@fortawesome/free-solid-svg-icons";
 import styles from "./styles.module.scss";
 
-const Hero = ({ title, button }) => {
+const Hero = ({ title, button, onButtonClick }) => {
   let ctaButton = null;
 
   if (button) {
     ctaButton = (
-      <Button href="#" className={`mt-2 mt-lg-3 btn-lg`}>
+      <Button className={`mt-2 mt-lg-3 btn-lg`} onClick={() => onButtonClick()}>
         <FontAwesomeIcon icon={faSignature} className="mr-2 fa-lg" />
         {button}
       </Button>
@@ -33,6 +33,7 @@ const Hero = ({ title, button }) => {
 Hero.propTypes = {
   title: PropTypes.string,
   button: PropTypes.string,
+  onButtonClick: PropTypes.func,
 };
 
 export default Hero;

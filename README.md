@@ -8,6 +8,10 @@ Academics letter website repository. The application has been bootstraped with [
 
 > Install yarn on your system: [https://yarnpkg.com/en/docs/install](https://yarnpkg.com/en/docs/install)
 
+### Environment Variables
+
+Run `cp .env.template .env` and edit `.env.development`
+
 ### Install dependencies
 
 > Only required on the first run, subsequent runs can use `yarn` to both
