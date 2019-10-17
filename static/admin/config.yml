@@ -43,3 +43,36 @@ collections:
               - label: "Signers"
                 name: "list"
                 widget: "list"
+      - file: "src/pages/next-steps.md"
+        label: "Next Steps"
+        name: "next-steps"
+        fields:
+          - label: "Template Key"
+            name: "templateKey"
+            widget: "hidden"
+            default: "next-steps"
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            fields:
+              - label: "Title"
+                name: "title"
+                widget: "string"
+                default: "Next steps"
+          - label: "Content Section"
+            name: "content"
+            widget: "object"
+            fields:
+              - label: "Title"
+                name: "title"
+                widget: "string"
+                default: "Get involed!"
+              - label: "Text"
+                name: "text"
+                widget: "text"
+              - label: "FAQ"
+                name: "faq"
+                widget: "list"
+                fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }

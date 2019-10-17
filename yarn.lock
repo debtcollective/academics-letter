@@ -4543,7 +4543,7 @@ detab@^2.0.0:
   dependencies:
     repeat-string "^1.5.4"
 
-details-polyfill@^1.1.0:
+details-polyfill@1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/details-polyfill/-/details-polyfill-1.1.0.tgz#d6d71be0885560e7afca42688b03ff379fd80e56"
   integrity sha512-YARtvrZ+FobZBMjfAyCxNZ5Cm5riB2tKMsdUQvTFnCvg3OeAkOGCoSxgDZT0uAXV+t5zgJYMGWd/ftVI6v8I0w==
