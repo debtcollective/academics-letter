@@ -11,7 +11,7 @@ module.exports = {
     author: "Debt Collective",
     twitterUsername: `@0debtzone`,
     facebookPage: "https://www.facebook.com/DebtCollective",
-    image: `${process.env.SITE_URL}/images/seo.png`,
+    image: `${process.env.SITE_URL}/img/seo.png`,
     url: process.env.SITE_URL,
   },
   plugins: [
