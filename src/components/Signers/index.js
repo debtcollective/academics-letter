@@ -4,8 +4,9 @@ import { Container, Row, Col } from "react-bootstrap";
 import styles from "./styles.module.scss";
 
 const Signers = ({ signers }) => {
-  const col1 = signers.splice(0, Math.ceil(signers.length / 2));
-  const col2 = signers;
+  const signersCopy = [].concat(signers);
+  const col1 = signersCopy.splice(0, Math.ceil(signers.length / 2));
+  const col2 = signersCopy;
 
   return (
     <section id="signers" className={`mt-5`}>
