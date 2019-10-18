@@ -67,6 +67,11 @@ export const IndexPageTemplate = ({ hero, letter, signers }) => {
         button={hero.button}
         onButtonClick={() => setModalShow(true)}
       />
+      <p className="text-center text-muted mt-2">
+        <small className="font-italic">
+          after you sign, you will be offered some Next Steps organizing ideas.
+        </small>
+      </p>
       <Letter text={letter.text} />
       <Signers signers={signers.list} />
       <SignModal show={modalShow} onHide={() => setModalShow(false)} />

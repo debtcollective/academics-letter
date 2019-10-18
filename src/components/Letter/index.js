@@ -4,7 +4,7 @@ import { Card, Container, Row, Col } from "react-bootstrap";
 import styles from "./styles.module.scss";
 
 const Letter = ({ text }) => (
-  <section id="letter" className={`mt-5 ${styles.letterSection}`}>
+  <section id="letter" className={`mt-4 ${styles.letterSection}`}>
     <Container>
       <Row>
         <Col>
