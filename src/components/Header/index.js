@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useLayoutEffect, useRef } from "react";
 import classNames from "classnames";
 import logo from "../../img/logo-light.svg";
 import { Collapse } from "react-bootstrap";
@@ -6,15 +6,30 @@ import { Link } from "gatsby";
 import "./styles.scss";
 
 const Header = () => {
+  const [scrollY, setScrollY] = useState(false);
   const [open, setOpen] = useState(false);
+  const headerEl = useRef(null);
+
+  const isScrolled =
+    headerEl.current && scrollY > headerEl.current.scrollHeight / 2;
+
   const headerClasses = classNames("header", "fixed-top", {
     "slider-nav-open": open,
+    active: isScrolled,
   });
   const menuTriggerClasses = classNames("menu-trigger", { active: open });
 
+  useLayoutEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  });
+
   return (
     <>
-      <header className={headerClasses}>
+      <header ref={headerEl} className={headerClasses}>
         <div className="container-fluid">
           <div className="row">
             <div className="col-3 col-lg-3 d-xl-none">
@@ -35,7 +50,7 @@ const Header = () => {
             </div>
             <div className="col-6 col-lg-6 col-xl-9">
               <div className="header-col justify-content-xl-start">
-                <Link to="/" className="nav-link">
+                <Link to="/">
                   <img
                     className="logo"
                     src={logo}
