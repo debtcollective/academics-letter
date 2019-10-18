@@ -40,6 +40,7 @@
     "react-dom": "^16.8.4",
     "react-google-recaptcha": "2.0.1",
     "react-helmet": "^5.2.0",
+    "scrollprogress": "3.0.2",
     "uuid": "^3.2.1"
   },
   "keywords": [

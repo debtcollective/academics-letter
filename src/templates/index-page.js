@@ -2,7 +2,14 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 
-import { Layout, Hero, Letter, Signers, SignModal } from "../components";
+import {
+  Hero,
+  Layout,
+  Letter,
+  ReadProgress,
+  SignModal,
+  Signers,
+} from "../components";
 
 // Required for Netlify Forms to work correctly
 const SignHiddenForm = () => (
@@ -76,6 +83,7 @@ export const IndexPageTemplate = ({ hero, letter, signers }) => {
       <Signers signers={signers.list} />
       <SignModal show={modalShow} onHide={() => setModalShow(false)} />
       <SignHiddenForm />
+      <ReadProgress />
     </>
   );
 };
