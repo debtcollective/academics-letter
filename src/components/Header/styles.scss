@@ -8,7 +8,8 @@
   flex-direction: column;
   height: $header-height-sm;
   justify-content: center;
-  transition: height 0.216s ease;
+  transition: height 0.216s ease, background-color 0.216s ease,
+    border-color 0.216s ease;
   transition-delay: 0.216s;
 
   &-col {
@@ -25,7 +26,7 @@
   &.active,
   &.slider-nav-open {
     background: $beige;
-    border-color: gray("100");
+    border-color: gray("500");
     height: $header-height-sm * $active-proportion;
 
     .logo {
@@ -80,6 +81,8 @@
 }
 
 .btn-session {
+  padding: 0.5rem 1rem !important;
+
   @include media-breakpoint-up(md) {
     width: 11.25rem;
   }
