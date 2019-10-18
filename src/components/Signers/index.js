@@ -13,7 +13,9 @@ const Signers = ({ signers }) => {
       <Container>
         <Row>
           <Col>
-            <h2 className="mb-2 font-weight-bold">Initial Signers</h2>
+            <h2 className="mb-2 font-weight-bold">
+              Initial Signers<small>*</small>
+            </h2>
           </Col>
         </Row>
         <Row>
@@ -26,6 +28,13 @@ const Signers = ({ signers }) => {
               ))}
             </Col>
           ))}
+        </Row>
+        <Row>
+          <Col>
+            <small className="text-muted mt-2">
+              * Institutional affiliations are for identification purposes only
+            </small>
+          </Col>
         </Row>
       </Container>
     </section>
