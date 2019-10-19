@@ -72,7 +72,7 @@ signers:
     - Sylvia Federici, Hofstra University
     - Hal Foster, Princeton University
     - Cynthia Franklin, University of Hawaii
-    - Ruthie Gilmore, CUNY Grad Center
+    - Ruth Gilmore, CUNY Grad Center
     - David Goldberg, UC Irvine
     - Sara Goldrick-Rab, Temple University
     - Linda Gordon, New York University
