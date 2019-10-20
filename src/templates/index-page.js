@@ -105,7 +105,7 @@ const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
 
   return (
-    <Layout title="Why Faculty Support College For All | Sign the letter">
+    <Layout title="Why Faculty Support College For All · Sign the letter">
       <IndexPageTemplate {...frontmatter} />
     </Layout>
   );

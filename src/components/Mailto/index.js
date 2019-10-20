@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { trackEvent } from "../../lib/amplitude";
 
 const toSearchString = (searchParams = {}) => {
   return Object.keys(searchParams)
@@ -18,7 +19,10 @@ const createMailtoLink = (email, headers) => {
 const Mailto = ({ children, email, headers, ...others }) => {
   const onClick = e => {
     e.preventDefault();
-    window.location.href = createMailtoLink(email, headers);
+
+    trackEvent("mailto link click", { href: email }, () => {
+      window.location.href = createMailtoLink(email, headers);
+    });
   };
 
   return (
