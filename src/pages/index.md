@@ -118,6 +118,7 @@ signers:
     - Andrew Ross, New York University
     - Maria Josefina Saldaña-Portillo, New York University
     - Saskia Sassen, Columbia University
+    - Joan Scott, Institute for Advanced Study
     - Richard Sennet, University College, London
     - Micol Siegel, Indiana University
     - Nikhil Singh, New York University
