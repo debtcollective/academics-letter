@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { trackEvent } from "../../lib/amplitude";
 import "./styles.scss";
 
 if (typeof window !== `undefined`) {
@@ -13,6 +14,7 @@ const FAQ = ({ entries }) => (
         <details
           key={`faq-question-${index}`}
           className="collapsable-list__item"
+          onClick={() => trackEvent("Next steps group click", { name: title })}
         >
           <summary className="summary">{title}</summary>
           <div className="content" dangerouslySetInnerHTML={{ __html: text }} />

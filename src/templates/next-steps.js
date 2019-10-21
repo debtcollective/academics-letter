@@ -4,6 +4,7 @@ import { graphql } from "gatsby";
 
 import { Layout, Hero, FAQ, Mailto } from "../components";
 import { Container, Row, Col, Card } from "react-bootstrap";
+import { trackOutboundLink } from "../lib/amplitude";
 
 const mailtoHeaders = {
   subject: "Next Steps for College For All",
@@ -43,9 +44,9 @@ export const NextStepsTemplate = ({ hero, content }) => (
               Contact your representative with{" "}
               <a
                 href="https://y.dsausa.org/c4a/debt/reps/"
-                alt="contact your representative about the student debt cancellation act"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={trackOutboundLink}
               >
                 this easy form
               </a>
@@ -55,10 +56,10 @@ export const NextStepsTemplate = ({ hero, content }) => (
 
             <Card.Text>
               <a
-                href="http://bit.ly/i-am-your-professor"
-                alt="i am your professor t-shirt"
+                href="https://bit.ly/i-am-your-professor"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={trackOutboundLink}
               >
                 Order a T-Shirt!
               </a>{" "}
@@ -96,7 +97,7 @@ const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
 
   return (
-    <Layout title="Why Faculty Support College For All | Next Steps">
+    <Layout title="Why Faculty Support College For All · Next Steps">
       <NextStepsTemplate {...frontmatter} />
     </Layout>
   );

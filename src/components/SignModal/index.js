@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignature } from "@fortawesome/free-solid-svg-icons";
 import Recaptcha from "react-google-recaptcha";
 import { Link } from "gatsby";
+import { trackEvent } from "../../lib/amplitude";
 import "./styles.scss";
 
 const RECAPTCHA_KEY =
@@ -47,8 +48,14 @@ class SignForm extends React.Component {
         college: this.state.college,
       }),
     })
-      .then(() => this.setState({ success: true }))
-      .catch(() => this.setState({ error: true }));
+      .then(() => {
+        trackEvent("Signature success");
+        this.setState({ success: true });
+      })
+      .catch(() => {
+        trackEvent("Signature error");
+        this.setState({ error: true });
+      });
   };
 
   render() {
@@ -81,6 +88,7 @@ class SignForm extends React.Component {
             type="text"
             name="name"
             placeholder="Enter full name"
+            required={true}
             onChange={this.handleChange}
           />
         </Form.Group>
@@ -93,10 +101,12 @@ class SignForm extends React.Component {
             type="email"
             name="email"
             placeholder="Enter email"
+            required={true}
             onChange={this.handleChange}
           />
           <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
+            Preferably use your <strong>.edu</strong> email. We'll never share
+            your email with anyone
           </Form.Text>
         </Form.Group>
 
@@ -108,6 +118,7 @@ class SignForm extends React.Component {
             type="text"
             name="college"
             placeholder="Enter college name"
+            required={true}
             onChange={this.handleChange}
           />
         </Form.Group>
@@ -159,7 +170,14 @@ const SuccessMessage = () => (
       controlId="formSubmit"
       className="text-center d-flex justify-content-center"
     >
-      <Link to="/next-steps" className="nav-link">
+      <Link
+        to="/next-steps"
+        className="nav-link"
+        onClick={() => {
+          debugger;
+          trackEvent("Signature next steps");
+        }}
+      >
         <Button className={`mt-2 mt-lg-3 btn-lg`} type="submit">
           Next Steps
         </Button>
