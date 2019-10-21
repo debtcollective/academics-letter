@@ -3,10 +3,27 @@ import PropTypes from "prop-types";
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "./styles.module.scss";
 
-const Signers = ({ signers }) => {
-  const signersCopy = [].concat(signers);
-  const col1 = signersCopy.splice(0, Math.ceil(signers.length / 2));
-  const col2 = signersCopy;
+const splitIntoTwo = array => {
+  const col1 = array.slice(0, Math.ceil(array.length / 2));
+  const col2 = array.slice(Math.ceil(array.length / 2));
+
+  return [col1, col2];
+};
+
+const sortSigners = signers =>
+  signers.sort((a, b) => {
+    var lastNameA = (a.lastName || "").toUpperCase();
+    var lastNameB = (b.lastName || "").toUpperCase();
+
+    return lastNameA > lastNameB ? 1 : -1;
+  });
+
+const Signers = ({ initialSigners, signers }) => {
+  // Split initial signers into two groups
+  const initialSignersCols = splitIntoTwo(initialSigners);
+
+  // Split signers into two groups
+  const signersCols = splitIntoTwo(sortSigners(signers));
 
   return (
     <section id="signers" className={`mt-5`}>
@@ -19,11 +36,29 @@ const Signers = ({ signers }) => {
           </Col>
         </Row>
         <Row>
-          {[col1, col2].map((col, colIndex) => (
+          {initialSignersCols.map((col, colIndex) => (
             <Col lg={6} key={colIndex}>
               {col.map((signer, index) => (
                 <p className={styles.signersItem} key={`${colIndex}-${index}`}>
                   {signer}
+                </p>
+              ))}
+            </Col>
+          ))}
+        </Row>
+        <Row className="mt-4">
+          <Col>
+            <h2 className="mb-2 font-weight-bold">
+              Signers<small>*</small>
+            </h2>
+          </Col>
+        </Row>
+        <Row>
+          {signersCols.map((col, colIndex) => (
+            <Col lg={6} key={colIndex}>
+              {col.map(signer => (
+                <p className={styles.signersItem} key={signer.number}>
+                  {signer.firstName} {signer.lastName}, {signer.college}
                 </p>
               ))}
             </Col>
@@ -42,7 +77,15 @@ const Signers = ({ signers }) => {
 };
 
 Signers.propTypes = {
-  signers: PropTypes.arrayOf(PropTypes.string),
+  initialSigners: PropTypes.arrayOf(PropTypes.string),
+  signers: PropTypes.arrayOf(
+    PropTypes.shape({
+      college: PropTypes.string,
+      firstName: PropTypes.string,
+      lastName: PropTypes.string,
+      number: PropTypes.number,
+    })
+  ),
 };
 
 export default Signers;

@@ -65,8 +65,31 @@ const SignHiddenForm = () => (
   </form>
 );
 
-export const IndexPageTemplate = ({ hero, letter, signers }) => {
+const prepareNetlifySigners = netlifySigners =>
+  netlifySigners.map(edge => {
+    const {
+      first_name,
+      last_name,
+      number,
+      data: { college },
+    } = edge.node;
+
+    return {
+      college: college,
+      firstName: first_name,
+      lastName: last_name,
+      number: number,
+    };
+  });
+
+export const IndexPageTemplate = ({
+  netlifySigners,
+  hero,
+  letter,
+  signers,
+}) => {
   const [modalShow, setModalShow] = useState(false);
+  const preparedNetlifySigners = prepareNetlifySigners(netlifySigners);
 
   return (
     <>
@@ -85,7 +108,7 @@ export const IndexPageTemplate = ({ hero, letter, signers }) => {
         </small>
       </p>
       <Letter text={letter.text} />
-      <Signers signers={signers.list} />
+      <Signers initialSigners={signers.list} signers={preparedNetlifySigners} />
       <SignModal
         show={modalShow}
         onHide={() => {
@@ -111,20 +134,36 @@ IndexPageTemplate.propTypes = {
   signers: PropTypes.shape({
     list: PropTypes.arrayOf(PropTypes.string),
   }),
+  netlifySigners: PropTypes.arrayOf(
+    PropTypes.shape({
+      node: PropTypes.shape({
+        first_name: PropTypes.string,
+        last_name: PropTypes.string,
+        number: PropTypes.number,
+        data: PropTypes.shape({
+          college: PropTypes.string,
+        }),
+      }),
+    })
+  ),
 };
 
 const IndexPage = ({ data }) => {
-  const { frontmatter } = data.markdownRemark;
+  const {
+    allNetlifyFormSubmission: { edges: netlifySigners },
+    markdownRemark: { frontmatter },
+  } = data;
 
   return (
     <Layout title="Why Faculty Support College For All · Sign the letter">
-      <IndexPageTemplate {...frontmatter} />
+      <IndexPageTemplate {...{ netlifySigners, ...frontmatter }} />
     </Layout>
   );
 };
 
 IndexPage.propTypes = {
   data: PropTypes.shape({
+    allNetlifyFormSubmission: PropTypes.any,
     markdownRemark: PropTypes.shape({
       frontmatter: PropTypes.object,
     }),
@@ -146,6 +185,19 @@ export const pageQuery = graphql`
         }
         signers {
           list
+        }
+      }
+    }
+    allNetlifyFormSubmission {
+      totalCount
+      edges {
+        node {
+          first_name
+          last_name
+          number
+          data {
+            college
+          }
         }
       }
     }
