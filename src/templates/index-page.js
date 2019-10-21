@@ -90,19 +90,24 @@ export const IndexPageTemplate = ({
 }) => {
   const [modalShow, setModalShow] = useState(false);
   const preparedNetlifySigners = prepareNetlifySigners(netlifySigners);
+  const totalSignersCount = signers.list.length + netlifySigners.length;
 
   return (
     <>
       <Hero
         title={hero.title}
         button={hero.button}
+        signersCount={totalSignersCount}
         onButtonClick={() => {
           trackEvent("Sign modal open", {}, () => {
             setModalShow(true);
           });
         }}
       />
-      <p className="text-center text-muted mt-2">
+      <p className="text-center mb-0 mt-2">
+        Sign and join other <strong>{totalSignersCount}</strong> academics.
+      </p>
+      <p className="text-center text-muted">
         <small className="font-italic">
           after you sign, you will be offered some Next Steps organizing ideas.
         </small>
