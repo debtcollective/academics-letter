@@ -1,0 +1,10 @@
+{
+  "name": "gatsby-source-netlify-form",
+  "version": "1.0.0",
+  "description": "fetch submissions from Netlify forms API to Gatsby",
+  "license": "BSD-3-Clause",
+  "dependencies": {
+    "node-fetch": "2.6.0",
+    "query-string": "6.8.3"
+  }
+}
