@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
-import { OutboundLink } from "gatsby-plugin-amplitude-analytics";
 
 import { Layout, Hero, FAQ, Mailto } from "../components";
 import { Container, Row, Col, Card } from "react-bootstrap";
+import { trackOutboundLink } from "../lib/amplitude";
 
 const mailtoHeaders = {
   subject: "Next Steps for College For All",
@@ -42,25 +42,27 @@ export const NextStepsTemplate = ({ hero, content }) => (
             </Card.Title>
             <Card.Text>
               Contact your representative with{" "}
-              <OutboundLink
+              <a
                 href="https://y.dsausa.org/c4a/debt/reps/"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={trackOutboundLink}
               >
                 this easy form
-              </OutboundLink>
+              </a>
               . Identify yourself as a professor and clearly express your
               support for College for All.
             </Card.Text>
 
             <Card.Text>
-              <OutboundLink
+              <a
                 href="https://bit.ly/i-am-your-professor"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={trackOutboundLink}
               >
                 Order a T-Shirt!
-              </OutboundLink>{" "}
+              </a>{" "}
               The shirts read: “I am your professor. I think your student debt
               is unjust. Let’s talk.” Worn on campus and to class, they are a
               perfect way to get meaningful conversations started. 

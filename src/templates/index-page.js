@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
+import { trackEvent } from "../lib/amplitude";
 
 import {
   Hero,
@@ -72,7 +73,11 @@ export const IndexPageTemplate = ({ hero, letter, signers }) => {
       <Hero
         title={hero.title}
         button={hero.button}
-        onButtonClick={() => setModalShow(true)}
+        onButtonClick={() => {
+          trackEvent("Sign modal open", {}, () => {
+            setModalShow(true);
+          });
+        }}
       />
       <p className="text-center text-muted mt-2">
         <small className="font-italic">
@@ -81,7 +86,14 @@ export const IndexPageTemplate = ({ hero, letter, signers }) => {
       </p>
       <Letter text={letter.text} />
       <Signers signers={signers.list} />
-      <SignModal show={modalShow} onHide={() => setModalShow(false)} />
+      <SignModal
+        show={modalShow}
+        onHide={() => {
+          trackEvent("Sign modal close", {}, () => {
+            setModalShow(false);
+          });
+        }}
+      />
       <SignHiddenForm />
       <ReadProgress />
     </>
