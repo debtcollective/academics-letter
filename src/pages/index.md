@@ -69,7 +69,7 @@ signers:
     - Lisa Duggan, New York University
     - Charlie Eaton, UC Merced
     - Grant Farred, Cornell University
-    - Sylvia Federici, Hofstra University
+    - Silvia Federici, Hofstra University
     - Hal Foster, Princeton University
     - Cynthia Franklin, University of Hawaii
     - Ruth Gilmore, CUNY Grad Center
@@ -78,7 +78,7 @@ signers:
     - Linda Gordon, New York University
     - Greg Grandin, Yale University
     - David Graeber, London School of Economics
-    - Miriam Greenberg, Harvard University
+    - Miriam Greenberg, UC Santa Cruz
     - Jack Halberstam, Columbia University
     - Michael Hanchard, University of Pennsylvania
     - Michael Hardt, Duke University

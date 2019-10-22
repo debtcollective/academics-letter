@@ -27,21 +27,21 @@ const SignHiddenForm = () => (
       name="name"
       placeholder="Enter full name"
       type="text"
-      id="formName"
+      required={true}
       className="form-control"
     />
     <input
       name="email"
       placeholder="Enter email"
       type="email"
-      id="formEmail"
+      required={true}
       className="form-control"
     />
     <input
       name="college"
       placeholder="Enter college name"
       type="text"
-      id="formSchool"
+      required={true}
       className="form-control"
     />
     <button type="submit" className="mt-2 mt-lg-3 btn-lg btn btn-primary">
@@ -105,7 +105,7 @@ export const IndexPageTemplate = ({
         }}
       />
       <p className="text-center mb-0 mt-2">
-        Sign and join other <strong>{totalSignersCount}</strong> academics.
+        Sign and join <strong>{totalSignersCount}</strong> other academics.
       </p>
       <p className="text-center text-muted">
         <small className="font-italic">
