@@ -18,12 +18,17 @@ const sortSigners = signers =>
     return lastNameA > lastNameB ? 1 : -1;
   });
 
+const prepareSigners = signers => {
+  return sortSigners(signers);
+};
+
 const Signers = ({ initialSigners, signers }) => {
   // Split initial signers into two groups
   const initialSignersCols = splitIntoTwo(initialSigners);
 
   // Split signers into two groups
-  const signersCols = splitIntoTwo(sortSigners(signers));
+  const preparedSigners = prepareSigners(signers);
+  const signersCols = splitIntoTwo(preparedSigners);
 
   return (
     <section id="signers" className={`mt-5`}>

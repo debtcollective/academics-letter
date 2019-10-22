@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
+import _ from "lodash";
 import { trackEvent } from "../lib/amplitude";
 
 import {
@@ -65,8 +66,8 @@ const SignHiddenForm = () => (
   </form>
 );
 
-const prepareNetlifySigners = netlifySigners =>
-  netlifySigners.map(edge => {
+const prepareNetlifySigners = netlifySigners => {
+  const signers = netlifySigners.map(edge => {
     const {
       first_name,
       last_name,
@@ -74,13 +75,21 @@ const prepareNetlifySigners = netlifySigners =>
       data: { college },
     } = edge.node;
 
+    // skip entries with incomplete data
+    if (!first_name || !last_name || !college) {
+      return null;
+    }
+
     return {
-      college: college,
+      college,
       firstName: first_name,
       lastName: last_name,
-      number: number,
+      number,
     };
   });
+
+  return _.compact(signers);
+};
 
 export const IndexPageTemplate = ({
   netlifySigners,
