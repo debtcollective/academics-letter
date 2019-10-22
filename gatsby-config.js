@@ -91,6 +91,13 @@ module.exports = {
       },
     },
     {
+      resolve: "gatsby-source-netlify-form",
+      options: {
+        accessToken: process.env.NETLIFY_ACCESS_TOKEN,
+        formId: process.env.NETLIFY_FORM_ID,
+      },
+    },
+    {
       resolve: "gatsby-plugin-netlify-cms",
       options: {
         modulePath: `${__dirname}/src/cms/cms.js`,

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
+import _ from "lodash";
 import { trackEvent } from "../lib/amplitude";
 
 import {
@@ -27,21 +28,21 @@ const SignHiddenForm = () => (
       name="name"
       placeholder="Enter full name"
       type="text"
-      id="formName"
+      required={true}
       className="form-control"
     />
     <input
       name="email"
       placeholder="Enter email"
       type="email"
-      id="formEmail"
+      required={true}
       className="form-control"
     />
     <input
       name="college"
       placeholder="Enter college name"
       type="text"
-      id="formSchool"
+      required={true}
       className="form-control"
     />
     <button type="submit" className="mt-2 mt-lg-3 btn-lg btn btn-primary">
@@ -65,27 +66,63 @@ const SignHiddenForm = () => (
   </form>
 );
 
-export const IndexPageTemplate = ({ hero, letter, signers }) => {
+const prepareNetlifySigners = netlifySigners => {
+  const signers = netlifySigners.map(edge => {
+    const {
+      first_name,
+      last_name,
+      number,
+      data: { college },
+    } = edge.node;
+
+    // skip entries with incomplete data
+    if (!first_name || !last_name || !college) {
+      return null;
+    }
+
+    return {
+      college,
+      firstName: first_name,
+      lastName: last_name,
+      number,
+    };
+  });
+
+  return _.compact(signers);
+};
+
+export const IndexPageTemplate = ({
+  netlifySigners,
+  hero,
+  letter,
+  signers,
+}) => {
   const [modalShow, setModalShow] = useState(false);
+  const preparedNetlifySigners = prepareNetlifySigners(netlifySigners);
+  const totalSignersCount = signers.list.length + netlifySigners.length;
 
   return (
     <>
       <Hero
         title={hero.title}
         button={hero.button}
+        signersCount={totalSignersCount}
         onButtonClick={() => {
           trackEvent("Sign modal open", {}, () => {
             setModalShow(true);
           });
         }}
       />
-      <p className="text-center text-muted mt-2">
+      <p className="text-center mb-0 mt-2">
+        Sign and join <strong>{totalSignersCount}</strong> other academics.
+      </p>
+      <p className="text-center text-muted">
         <small className="font-italic">
           after you sign, you will be offered some Next Steps organizing ideas.
         </small>
       </p>
       <Letter text={letter.text} />
-      <Signers signers={signers.list} />
+      <Signers initialSigners={signers.list} signers={preparedNetlifySigners} />
       <SignModal
         show={modalShow}
         onHide={() => {
@@ -111,20 +148,36 @@ IndexPageTemplate.propTypes = {
   signers: PropTypes.shape({
     list: PropTypes.arrayOf(PropTypes.string),
   }),
+  netlifySigners: PropTypes.arrayOf(
+    PropTypes.shape({
+      node: PropTypes.shape({
+        first_name: PropTypes.string,
+        last_name: PropTypes.string,
+        number: PropTypes.number,
+        data: PropTypes.shape({
+          college: PropTypes.string,
+        }),
+      }),
+    })
+  ),
 };
 
 const IndexPage = ({ data }) => {
-  const { frontmatter } = data.markdownRemark;
+  const {
+    allNetlifyFormSubmission: { edges: netlifySigners },
+    markdownRemark: { frontmatter },
+  } = data;
 
   return (
     <Layout title="Why Faculty Support College For All · Sign the letter">
-      <IndexPageTemplate {...frontmatter} />
+      <IndexPageTemplate {...{ netlifySigners, ...frontmatter }} />
     </Layout>
   );
 };
 
 IndexPage.propTypes = {
   data: PropTypes.shape({
+    allNetlifyFormSubmission: PropTypes.any,
     markdownRemark: PropTypes.shape({
       frontmatter: PropTypes.object,
     }),
@@ -146,6 +199,19 @@ export const pageQuery = graphql`
         }
         signers {
           list
+        }
+      }
+    }
+    allNetlifyFormSubmission {
+      totalCount
+      edges {
+        node {
+          first_name
+          last_name
+          number
+          data {
+            college
+          }
         }
       }
     }
