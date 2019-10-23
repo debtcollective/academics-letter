@@ -61,11 +61,15 @@ const Signers = ({ initialSigners, signers }) => {
         <Row>
           {signersCols.map((col, colIndex) => (
             <Col lg={6} key={colIndex}>
-              {col.map(signer => (
-                <p className={styles.signersItem} key={signer.number}>
-                  {signer.firstName} {signer.lastName}, {signer.college}
-                </p>
-              ))}
+              {col.map(signer => {
+                const firstName = signer.firstName.toLowerCase();
+                const lastName = signer.lastName.toLowerCase()
+                const college = signer.college
+
+                return (<p className={styles.signersItem} key={signer.number}>
+                  {firstName} {lastName}, {college}
+                </p>)
+              })}
             </Col>
           ))}
         </Row>
