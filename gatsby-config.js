@@ -83,6 +83,13 @@ module.exports = {
         ],
       },
     },
+    // expose Netlify CONTEXT env var to client
+    {
+      resolve: `gatsby-plugin-env-variables`,
+      options: {
+        whitelist: ["CONTEXT"],
+      },
+    },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
