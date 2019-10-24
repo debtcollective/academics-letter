@@ -3,6 +3,7 @@ import classNames from "classnames";
 import logo from "../../img/logo-light.svg";
 import { Collapse } from "react-bootstrap";
 import { Link } from "gatsby";
+import { trackOutboundLink } from "../../lib/amplitude";
 import "./styles.scss";
 
 const Header = () => {
@@ -70,6 +71,7 @@ const Header = () => {
                         className="nav-link"
                         href="https://debtcollective.org/donate"
                         target="_blank"
+                        onClick={trackOutboundLink}
                       >
                         Donate
                       </a>
@@ -85,6 +87,7 @@ const Header = () => {
                   href="https://community.debtcollective.org/signup"
                   target="_blank"
                   role="button"
+                  onClick={trackOutboundLink}
                   className="btn btn-lg btn-outline-dark d-none d-xl-block btn-session"
                 >
                   Sign up
@@ -94,6 +97,7 @@ const Header = () => {
                   href="https://community.debtcollective.org/login"
                   target="_blank"
                   role="button"
+                  onClick={trackOutboundLink}
                   className="btn btn-primary btn-lg d-none d-md-block btn-session "
                 >
                   Login
@@ -103,6 +107,7 @@ const Header = () => {
                   href="https://community.debtcollective.org/login"
                   target="_blank"
                   role="button"
+                  onClick={trackOutboundLink}
                   className="btn btn-primary btn-sm d-md-none d-xs-block d-sm-block btn-session"
                 >
                   Login
@@ -125,6 +130,7 @@ const Header = () => {
                 className="nav-link"
                 href="https://debtcollective.org/donate"
                 target="_blank"
+                onClick={trackOutboundLink}
               >
                 Donate
               </a>
