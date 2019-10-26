@@ -1,10 +1,7 @@
 const amplitudeEnabled = () => {
-  const isProduction =
-    process.env.NODE_ENV === "production" ||
-    process.env.CONTEXT === "production";
   const apiKey = process.env.AMPLITUDE_ANALYTICS_API_KEY;
 
-  return isProduction && apiKey;
+  return !!apiKey;
 };
 
 exports.onClientEntry = () => {
