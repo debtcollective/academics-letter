@@ -1,7 +1,10 @@
 const amplitudeEnabled = () => {
-  const apiKey = process.env.AMPLITUDE_ANALYTICS_API_KEY;
+  const isProduction =
+    process.env.NODE_ENV === "production" ||
+    process.env.CONTEXT === "production";
+  const apiKey = process.env.GATSBY_AMPLITUDE_ANALYTICS_API_KEY;
 
-  return !!apiKey;
+  return isProduction && apiKey;
 };
 
 exports.onClientEntry = () => {
@@ -9,7 +12,7 @@ exports.onClientEntry = () => {
     return false;
   }
 
-  const apiKey = process.env.AMPLITUDE_ANALYTICS_API_KEY;
+  const apiKey = process.env.GATSBY_AMPLITUDE_ANALYTICS_API_KEY;
 
   // Load the library and attach to `window.amplitude`.
   (function(e, t) {
