@@ -1,72 +1,72 @@
-import React from "react";
-import { Modal, Form, Button } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSignature } from "@fortawesome/free-solid-svg-icons";
-import Recaptcha from "react-google-recaptcha";
-import { Link } from "gatsby";
-import { trackEvent } from "../../lib/amplitude";
-import "./styles.scss";
+import React from 'react'
+import { Modal, Form, Button } from 'react-bootstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSignature } from '@fortawesome/free-solid-svg-icons'
+import Recaptcha from 'react-google-recaptcha'
+import { Link } from 'gatsby'
+import { trackEvent } from '../../lib/amplitude'
+import './styles.scss'
 
 const RECAPTCHA_KEY =
-  process.env.SITE_RECAPTCHA_KEY || process.env.GATSBY_SITE_RECAPTCHA_KEY;
+  process.env.SITE_RECAPTCHA_KEY || process.env.GATSBY_SITE_RECAPTCHA_KEY
 
 function encode(data) {
   return Object.keys(data)
-    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-    .join("&");
+    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&')
 }
 
 class SignForm extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       error: false,
-      success: false,
-    };
+      success: false
+    }
   }
 
   handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
+    this.setState({ [e.target.name]: e.target.value })
+  }
 
   handleRecaptcha = value => {
-    this.setState({ "g-recaptcha-response": value });
-  };
+    this.setState({ 'g-recaptcha-response': value })
+  }
 
   handleSubmit = e => {
-    e.preventDefault();
-    const form = e.target;
+    e.preventDefault()
+    const form = e.target
 
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
-        "form-name": form.getAttribute("name"),
-        "g-recaptcha-response": this.state["g-recaptcha-response"],
+        'form-name': form.getAttribute('name'),
+        'g-recaptcha-response': this.state['g-recaptcha-response'],
         name: this.state.name,
         email: this.state.email,
-        college: this.state.college,
-      }),
+        college: this.state.college
+      })
     })
       .then(() => {
-        trackEvent("Signature success");
-        this.setState({ success: true });
+        trackEvent('Signature success')
+        this.setState({ success: true })
       })
       .catch(() => {
-        trackEvent("Signature error");
-        this.setState({ error: true });
-      });
-  };
+        trackEvent('Signature error')
+        this.setState({ error: true })
+      })
+  }
 
   render() {
-    const { success, error } = this.state;
+    const { success, error } = this.state
 
     if (error) {
-      return <ErrorMessage />;
+      return <ErrorMessage />
     }
 
     if (success) {
-      return <SuccessMessage />;
+      return <SuccessMessage />
     }
 
     return (
@@ -130,7 +130,7 @@ class SignForm extends React.Component {
           <Recaptcha
             className="field"
             ref={recaptcha => {
-              this.recaptcha = recaptcha;
+              this.recaptcha = recaptcha
             }}
             sitekey={RECAPTCHA_KEY}
             onChange={this.handleRecaptcha}
@@ -151,13 +151,13 @@ class SignForm extends React.Component {
           </Button>
         </Form.Group>
       </form>
-    );
+    )
   }
 }
 
 const ErrorMessage = () => (
   <div>Your information was not sent. Please try again later.</div>
-);
+)
 
 const SuccessMessage = () => (
   <div>
@@ -174,8 +174,7 @@ const SuccessMessage = () => (
         to="/next-steps"
         className="nav-link"
         onClick={() => {
-          debugger;
-          trackEvent("Signature next steps");
+          trackEvent('Signature next steps')
         }}
       >
         <Button className={`mt-2 mt-lg-3 btn-lg`} type="submit">
@@ -184,7 +183,7 @@ const SuccessMessage = () => (
       </Link>
     </Form.Group>
   </div>
-);
+)
 
 const SignModal = props => (
   <Modal
@@ -208,6 +207,6 @@ const SignModal = props => (
       <SignForm />
     </Modal.Body>
   </Modal>
-);
+)
 
-export default SignModal;
+export default SignModal
