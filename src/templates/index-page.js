@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import { graphql } from "gatsby";
-import _ from "lodash";
-import { trackEvent } from "../lib/amplitude";
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
+import { graphql } from 'gatsby'
+import _ from 'lodash'
+import { trackEvent } from '../lib/amplitude'
 
 import {
   Hero,
@@ -10,10 +10,11 @@ import {
   Letter,
   ReadProgress,
   SignModal,
-  Signers,
-} from "../components";
+  Signers
+} from '../components'
 
 // Required for Netlify Forms to work correctly
+// This is due the form is hidden in JavaScript at build time (since are inside a modal)
 const SignHiddenForm = () => (
   <form
     name="letter-form"
@@ -23,7 +24,7 @@ const SignHiddenForm = () => (
     hidden
   >
     <input type="hidden" name="form-name" value="letter-form" />
-    <input type="text" name="__bf" style={{ display: "none" }} />
+    <input type="text" name="__bf" style={{ display: 'none' }} />
     <input
       name="name"
       placeholder="Enter full name"
@@ -64,7 +65,7 @@ const SignHiddenForm = () => (
       Sign your name
     </button>
   </form>
-);
+)
 
 const prepareNetlifySigners = netlifySigners => {
   const signers = netlifySigners.map(edge => {
@@ -72,34 +73,34 @@ const prepareNetlifySigners = netlifySigners => {
       first_name,
       last_name,
       number,
-      data: { college },
-    } = edge.node;
+      data: { college }
+    } = edge.node
 
     // skip entries with incomplete data
     if (!first_name || !last_name || !college) {
-      return null;
+      return null
     }
 
     return {
       college,
       firstName: first_name,
       lastName: last_name,
-      number,
-    };
-  });
+      number
+    }
+  })
 
-  return _.compact(signers);
-};
+  return _.compact(signers)
+}
 
 export const IndexPageTemplate = ({
   netlifySigners,
   hero,
   letter,
-  signers,
+  signers
 }) => {
-  const [modalShow, setModalShow] = useState(false);
-  const preparedNetlifySigners = prepareNetlifySigners(netlifySigners);
-  const totalSignersCount = signers.list.length + netlifySigners.length;
+  const [modalShow, setModalShow] = useState(false)
+  const preparedNetlifySigners = prepareNetlifySigners(netlifySigners)
+  const totalSignersCount = signers.list.length + netlifySigners.length
 
   return (
     <>
@@ -108,9 +109,9 @@ export const IndexPageTemplate = ({
         button={hero.button}
         signersCount={totalSignersCount}
         onButtonClick={() => {
-          trackEvent("Sign modal open", {}, () => {
-            setModalShow(true);
-          });
+          trackEvent('Sign modal open', {}, () => {
+            setModalShow(true)
+          })
         }}
       />
       <p className="text-center mb-0 mt-2">
@@ -126,27 +127,27 @@ export const IndexPageTemplate = ({
       <SignModal
         show={modalShow}
         onHide={() => {
-          trackEvent("Sign modal close", {}, () => {
-            setModalShow(false);
-          });
+          trackEvent('Sign modal close', {}, () => {
+            setModalShow(false)
+          })
         }}
       />
       <SignHiddenForm />
       <ReadProgress />
     </>
-  );
-};
+  )
+}
 
 IndexPageTemplate.propTypes = {
   hero: PropTypes.shape({
     title: PropTypes.string,
-    button: PropTypes.string,
+    button: PropTypes.string
   }),
   letter: PropTypes.shape({
-    text: PropTypes.string,
+    text: PropTypes.string
   }),
   signers: PropTypes.shape({
-    list: PropTypes.arrayOf(PropTypes.string),
+    list: PropTypes.arrayOf(PropTypes.string)
   }),
   netlifySigners: PropTypes.arrayOf(
     PropTypes.shape({
@@ -155,36 +156,36 @@ IndexPageTemplate.propTypes = {
         last_name: PropTypes.string,
         number: PropTypes.number,
         data: PropTypes.shape({
-          college: PropTypes.string,
-        }),
-      }),
+          college: PropTypes.string
+        })
+      })
     })
-  ),
-};
+  )
+}
 
 const IndexPage = ({ data }) => {
   const {
     allNetlifyFormSubmission: { edges: netlifySigners },
-    markdownRemark: { frontmatter },
-  } = data;
+    markdownRemark: { frontmatter }
+  } = data
 
   return (
     <Layout title="Why Faculty Support College For All · Sign the letter">
       <IndexPageTemplate {...{ netlifySigners, ...frontmatter }} />
     </Layout>
-  );
-};
+  )
+}
 
 IndexPage.propTypes = {
   data: PropTypes.shape({
     allNetlifyFormSubmission: PropTypes.any,
     markdownRemark: PropTypes.shape({
-      frontmatter: PropTypes.object,
-    }),
-  }),
-};
+      frontmatter: PropTypes.object
+    })
+  })
+}
 
-export default IndexPage;
+export default IndexPage
 
 export const pageQuery = graphql`
   query IndexPageTemplate {
@@ -216,4 +217,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`
